@@ -16,14 +16,14 @@ jobs:
         sudo apt-get install -y gcovr
 
     - name: build sender
-      run: g++ -Wall -Wextra -fprofile-arcs sender.c dataAquisition.c -o sender 
+      run: g++ -Wall -Wextra -fprofile-arcs sender.c dataCollection.c -o sender 
       
     - name: run sender
       #run: ./testchecker
       run: ./sender
     
     - name: build test
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testChecker.cpp dataAquisition.c -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testChecker.cpp dataCollection.c -o testchecker
       
     - name: run test
       run: ./testchecker
