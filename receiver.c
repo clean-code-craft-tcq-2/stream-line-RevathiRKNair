@@ -7,7 +7,7 @@ void readData(float* currentReading, float* voltageReading, int noOfSamples){
   for(int i = 0; i < noOfSamples; i++){
      scanf("%f", &currentReading[i]);
      scanf("%f", &voltageReading[i]);
-     printf("%f, %f, %f\n", currentReading[i], voltageReading[i]);
+     printf("%f, %f\n", currentReading[i], voltageReading[i]);
   }
 }
 
