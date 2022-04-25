@@ -25,6 +25,8 @@ float findMax(float* input, int streamSize){
   for (int i=1; i<streamSize; i++){
     if(input[i]>max)
       max = input[i];
+  }
+  return max;
 }
 
 void minMaxValues(float* currentReading, float* voltageReading, int streamSize) {
