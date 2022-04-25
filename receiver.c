@@ -3,17 +3,42 @@
 #include <stdlib.h>
 #include <string.h>
 
-void readData(float* temperature, float* stateOfCharge, float* chargeRate, int noOfSamples){
+void readData(float* currentReading, float* voltageReading, int noOfSamples){
   for(int i = 0; i < noOfSamples; i++){
-     scanf("%f", &temperature[i]);
-     scanf("%f", &stateOfCharge[i]);
-     scanf("%f", &chargeRate[i]);
-     printf("%f, %f, %f\n", temperature[i], stateOfCharge[i], chargeRate[i]);
+     scanf("%f", &currentReading[i]);
+     scanf("%f", &voltageReading[i]);
+     printf("%f, %f, %f\n", currentReading[i], voltageReading[i]);
   }
+}
+
+float findMin(float* input, int streamSize){
+  int min = input[0];
+  for (int i=1; i<streamSize; i++){
+    if(input[i]<min)
+      min = input[i];
+  }
+  return min;
+}
+
+float findMax(float* input, int streamSize){
+  int max = input[0];
+  for (int i=1; i<streamSize; i++){
+    if(input[i]>max)
+      max = input[i];
+}
+
+void minMaxValues(float* currentReading, float* voltageReading, int streamSize) {
+  float minI, maxI, minU, maxU;
+  minI = findMin(currentReading, streamSize);
+  maxI = findMax(currentReading, streamSize);
+  minU = findMin(voltageReading, streamSize);
+  maxU = findMax(voltageReading, streamSize);
+  printf("min current: %f max current: %f min voltage: %f max voltage: %f\n", minI, maxI, minU, maxU);
 }
 
 int main()
 {
-    float Temperature[50],StateOfCharge[50],ChargeRate[50] = {0};
-    readData(Temperature, StateOfCharge, ChargeRate, 50);   
+    float Current[50], Voltage[50] = {0};
+    readData(Current, Voltage, 50);  
+    void minMaxValues(Current, Voltage, 50);
 }
