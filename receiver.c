@@ -3,11 +3,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-void readData(float* currentReading, float* voltageReading, int noOfSamples){
+void receiveData(float* currentReading, float* voltageReading, int noOfSamples){
+  char ReadString[400];
   for(int i = 0; i < noOfSamples; i++){
-     scanf("%f", &currentReading[i]);
-     scanf("%f", &voltageReading[i]);
-     printf("%f, %f\n", currentReading[i], voltageReading[i]);
+    scanf("%50s", ReadString);
+	  if(scanf("%50s", ReadString) == EOF) 
+    {
+       break;
+    }
+    scanf("%f", &currentReading[i]);
+    scanf("%50s", ReadString); 
+    scanf("%50s", ReadString);
+    scanf("%50s", ReadString); 
+    scanf("%50s", ReadString); 
+    scanf("%50s", ReadString); 
+    scanf("%50s", ReadString);
+    scanf("%f", &voltageReading[i]);
+	  printf("%.3f \t %.3f\n",currentReading[i],voltageReading[i]);
   }
 }
 
@@ -29,6 +41,18 @@ float findMax(float* input, int streamSize){
   return max;
 }
 
+float ComputeAvg(float* input, int streamSize)
+{
+    float avg = 0;
+    float sum = 0;
+    for(int i = 0; i < streamSize; i++)
+    {
+        sum = sum + input[i];
+    }
+    avg = sum/streamSize;
+    return avg;
+}
+
 void minMaxValues(float* currentReading, float* voltageReading, int streamSize) {
   float minI, maxI, minU, maxU;
   minI = findMin(currentReading, streamSize);
@@ -41,6 +65,6 @@ void minMaxValues(float* currentReading, float* voltageReading, int streamSize) 
 int main()
 {
     float Current[50], Voltage[50] = {0};
-    readData(Current, Voltage, 50);  
+    receiveData(Current, Voltage, 50);  
     minMaxValues(Current, Voltage, 50);
 }
