@@ -24,7 +24,7 @@ void receiveData(float* currentReading, float* voltageReading, int noOfSamples){
 }
 
 float findMin(float* input, int streamSize){
-  int min = input[0];
+  float min = input[0];
   for (int i=1; i<streamSize; i++){
     if(input[i]<min)
       min = input[i];
@@ -33,7 +33,7 @@ float findMin(float* input, int streamSize){
 }
 
 float findMax(float* input, int streamSize){
-  int max = input[0];
+  float max = input[0];
   for (int i=1; i<streamSize; i++){
     if(input[i]>max)
       max = input[i];
