@@ -63,9 +63,10 @@ void minMaxValues(float* currentReading, float* voltageReading, int streamSize) 
   printf("min current: %f max current: %f min voltage: %f max voltage: %f\n", minI, maxI, minU, maxU);
 }
 
-int main()
+/*int main()
 {
     float Current[50], Voltage[50] = {0};
     receiveData(Current, Voltage, 50);  
     minMaxValues(Current, Voltage, 50);
-}
+	return 0;
+}*/
