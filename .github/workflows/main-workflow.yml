@@ -32,8 +32,7 @@ jobs:
     - name: build testSender
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerSender.cpp dataCollection.c -o testcheckerSender
       
-    - name: run test
-      run: ./testcheckerSender
+   
 	  
     - name: build testReceiver
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp dataCollection.c -o testcheckerReceiver
