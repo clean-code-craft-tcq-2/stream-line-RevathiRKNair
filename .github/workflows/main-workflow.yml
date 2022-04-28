@@ -16,24 +16,16 @@ jobs:
         sudo apt-get install -y gcovr
 
     - name: build sender
-      run: g++ -Wall -Wextra -fprofile-arcs sender.c dataCollection.c -o sender 
-      
-    - name: run sender
-      #run: ./testchecker
-      run: ./sender
-    
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testsender testCheckerSender.cpp sender.c
+  
     - name: build receiver
-      run: g++ -Wall -Wextra -fprofile-arcs receiver.c dataCollection.c -o receiver 
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testreceiver testCheckerReceiver.cpp receiver.c
+  
+    - name: run sender
+      run: ./testsender
       
-    - name: run receiver
-      #run: ./testchecker
-      run: ./receiver
-      
-    - name: build test
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testChecker.cpp dataCollection.c -o testchecker
-      
-    - name: run test
-      run: ./testchecker
+    - name: Pipeline sender/receiver
+      run: ./testsender | ./testreceiver
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
