@@ -29,10 +29,10 @@ jobs:
       run: ./receiver
       
     - name: build test
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testChecker.cpp dataCollection.c -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerSender.cpp dataCollection.c -o testcheckersender
       
     - name: run test
-      run: ./testchecker
+      run: ./testcheckersender
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
