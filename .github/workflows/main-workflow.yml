@@ -22,7 +22,7 @@ jobs:
       run: ./sender
     
     - name: build receiver
-      run: g++ -Wall -Wextra -fprofile-arcs receiver.c dataCollection.c -o receiver 
+      run: g++ -Wall -Wextra -fprofile-arcs receiver.c -o receiver 
       
     - name: run receiver
       #run: ./testchecker
@@ -35,7 +35,7 @@ jobs:
       run: ./testcheckersender
       
     - name: build testReceiver
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp dataCollection.c -o testcheckerreceiver
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp receiver.c -o testcheckerreceiver
       
     - name: run testReceiver
       run: ./testcheckerreceiver
