@@ -30,16 +30,16 @@ jobs:
       run: ./receiver
       
     - name: build testSender
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerSender.cpp dataCollection.c -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerSender.cpp dataCollection.c -o testcheckerSender
       
     - name: run test
-      run: ./testchecker
+      run: ./testcheckerSender
 	  
     - name: build testReceiver
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp dataCollection.c -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp dataCollection.c -o testcheckerReceiver
       
     - name: Pipeline sender/receiver
-      run: ./testSender | ./testReceiver
+      run: ./testcheckerSender | ./testcheckerReceiver
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
