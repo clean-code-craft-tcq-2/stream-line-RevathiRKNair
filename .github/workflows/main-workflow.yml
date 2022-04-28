@@ -28,11 +28,14 @@ jobs:
       #run: ./testchecker
       run: ./receiver
       
-    - name: build test
+    - name: build testSender
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerSender.cpp dataCollection.c -o testcheckersender
       
-    - name: run test
+    - name: run testSender
       run: ./testcheckersender
+      
+    - name: build testReceiver
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage testCheckerReceiver.cpp dataCollection.c -o testcheckerreceiver
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
