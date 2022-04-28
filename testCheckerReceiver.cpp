@@ -4,6 +4,7 @@
 #include "dataCollection.h"
 #include <string.h>
 #include <stdio.h>
+#include "receiver.h"
 
 TEST_CASE("Test for Checking wether read of data from console input") 
 {
