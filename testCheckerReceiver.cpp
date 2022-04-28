@@ -8,7 +8,7 @@ TEST_CASE("Test for finding max value")
 {
   float current[5]= {1.2, 6.7, 8.4, 7.8, 5.6};
   float max = findMax(current, 5);
-  REQUIRE(max == 8.4);
+  REQUIRE(max == 8.4f);
 }
 
 TEST_CASE("Test for Checking wether read of data from console input") 
