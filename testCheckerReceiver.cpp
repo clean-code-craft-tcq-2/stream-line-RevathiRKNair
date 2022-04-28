@@ -1,11 +1,16 @@
 
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "test/catch.hpp"
-#include "dataCollection.h"
 #include "receiver.h"
 #include <string.h>
 #include <stdio.h>
 
+TEST_CASE("Test for finding max value") 
+{
+  float current[5]= {1.2, 6.7, 8.4, 7.8, 5.6};
+  float max = findmax(current, 5);
+  REQUIRE(max == 8.4);
+}
 
 TEST_CASE("Test for Checking wether read of data from console input") 
 {
@@ -19,3 +24,4 @@ TEST_CASE("Test for Checking wether read of data from console input")
   REQUIRE(current[0] - current_ref[0] <= 0.001);
   REQUIRE(voltage[0] - voltage_ref[0] <= 0.001);
 }
+
