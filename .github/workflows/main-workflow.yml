@@ -22,7 +22,7 @@ jobs:
       run: ./sender
     
     - name: build receiver
-      run: g++ -Wall -Wextra -fprofile-arcs receiver.c -o receiver 
+      run: g++ -Wall -Wextra -fprofile-arcs dataReceiver.c -o receiver 
       
     - name: run receiver
       #run: ./testchecker
