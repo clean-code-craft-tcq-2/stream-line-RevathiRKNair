@@ -2,9 +2,10 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "test/catch.hpp"
 #include "dataCollection.h"
+#include "receiver.h"
 #include <string.h>
 #include <stdio.h>
-#include "receiver.h"
+
 
 TEST_CASE("Test for Checking wether read of data from console input") 
 {
@@ -14,7 +15,7 @@ TEST_CASE("Test for Checking wether read of data from console input")
   float voltage_ref[1] = {2.6};
   printf(" Current: %.2f , Voltage: %.2f ", current_ref[0],  voltage_ref[0]);
   //copy paste the following line on the console to perform test:
-  receiveData( current,voltage, 1);
+  receiveData(current, voltage, 1);
   REQUIRE(current[0] - current_ref[0] <= 0.001);
   REQUIRE(voltage[0] - voltage_ref[0] <= 0.001);
 }
