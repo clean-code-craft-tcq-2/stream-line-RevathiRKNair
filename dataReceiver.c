@@ -41,7 +41,7 @@ float findMax(float* input, int streamSize){
   return max;
 }
 
-float ComputeAvg(float* input, int streamSize)
+float computeAvg(float* input, int streamSize)
 {
     float avg = 0;
     float sum = 0;
@@ -53,6 +53,38 @@ float ComputeAvg(float* input, int streamSize)
     return avg;
 }
 
+float computeSMA(float *input, int winSize) {
+     float sum = 0, float movingAvg[50];
+     for (int i = 0; i < 50; i++) 
+     {
+         sum = sum + input[i];
+         if (i >= winSize){
+	     sum -= input(i-winSize);
+	 }
+	 if(i >= winSize - 1) {
+            movingAvg[i-winSize] = sum / winSize;
+	 }
+     }
+    return movingAvg;
+}
+
+ int computeSMA(float sample) {
+    static int sampleSize = 0;
+    static float SampleSlider[5] ={0};
+    SampleSlider[sampleSize % 5] = sample/5.0;
+    sampleSize++;
+    if (sampleSize >= 5)
+    {
+        float avg = SampleSlider[0] +SampleSlider[1] + SampleSlider[2]+ SampleSlider[3]+ SampleSlider[4];
+        printf("average temperature: %f\n", avgTemperature);
+        return 1;
+        
+    } else{
+        return -1;
+    }
+    
+}
+	
 void minMaxValues(float* currentReading, float* voltageReading, int streamSize) {
   float minI, maxI, minU, maxU;
   minI = findMin(currentReading, streamSize);
