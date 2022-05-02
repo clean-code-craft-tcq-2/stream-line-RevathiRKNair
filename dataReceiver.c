@@ -53,8 +53,8 @@ float computeAvg(float* input, int streamSize)
     return avg;
 }
 
-float computeSMA(float *input, int winSize) {
-     float sum = 0, float movingAvg[50]={0};
+void computeSMA(float *input, int winSize, float *movingAvg) {
+     float sum = 0;
      for (int i = 0; i < 50; i++) 
      {
          sum = sum + input[i];
@@ -62,10 +62,9 @@ float computeSMA(float *input, int winSize) {
 	     sum -= input[i-winSize];
 	 }
 	 if(i >= winSize - 1) {
-            movingAvg[i-winSize] = sum / winSize;
+            movingAvg[i-winSize] = sum/winSize;
 	 }
      }
-    return movingAvg;
 }
 	
 void minMaxValues(float* currentReading, float* voltageReading, int streamSize) {
