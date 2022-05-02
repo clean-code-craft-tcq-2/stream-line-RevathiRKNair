@@ -24,3 +24,4 @@ TEST_CASE("Test for Checking wether read of data from console input")
   REQUIRE(voltage[0] - voltage_ref[0] <= 0.001);
 }
 
+
