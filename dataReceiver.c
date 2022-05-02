@@ -54,12 +54,12 @@ float computeAvg(float* input, int streamSize)
 }
 
 float computeSMA(float *input, int winSize) {
-     float sum = 0, float movingAvg[50];
+     float sum = 0, float movingAvg[50]={0};
      for (int i = 0; i < 50; i++) 
      {
          sum = sum + input[i];
          if (i >= winSize){
-	     sum -= input(i-winSize);
+	     sum -= input[i-winSize];
 	 }
 	 if(i >= winSize - 1) {
             movingAvg[i-winSize] = sum / winSize;
