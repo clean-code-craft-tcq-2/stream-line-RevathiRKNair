@@ -10,6 +10,7 @@ TEST_CASE("Test for finding max and min value")
   float max = findMax(current, 5);
   float min = findMin(current, 5);
   float avg = computeAvg(current, 5);
+  float sma =  computeSMA()
   REQUIRE(max == 8.4f);
   REQUIRE(min == 1.2f);
   REQUIRE( abs(avg - 5.94f ) <=0.001);
