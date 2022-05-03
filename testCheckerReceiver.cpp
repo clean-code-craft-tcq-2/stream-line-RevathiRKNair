@@ -12,7 +12,7 @@ TEST_CASE("Test for finding max and min value")
   float avg = computeAvg(current, 5);
   REQUIRE(max == 8.4f);
   REQUIRE(min == 1.2f);
-  REQUIRE(Avg == 5.94f);
+  REQUIRE(avg == 5.94f);
 }
 
 TEST_CASE("Test for Checking wether read of data from console input") 
